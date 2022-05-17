@@ -1,7 +1,7 @@
 package com.example.friendsList.controller;
 
 import com.example.friendsList.domain.entity.FriendEntity;
-import com.example.friendsList.domain.service.service.FriendService;
+import com.example.friendsList.domain.service.FriendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

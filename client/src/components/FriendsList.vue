@@ -2,7 +2,7 @@
   <div class="friendsList">
     <ul>
       <li v-for="friend in friends" :key="friend.id">
-        <router-link :to="{path: `/detail/${friend.id}/${friends.length}`, params: {id: friend.id, length: friends.length} }">{{ friend.id }} {{ friend.name }}</router-link>
+        <router-link class="router-link" :to="{path: `/detail/${friend.id}/${friends.length}`, params: {id: friend.id, length: friends.length} }">{{ friend.name }}</router-link>
       </li>
     </ul>
   </div>
@@ -30,5 +30,20 @@ export default {
 <style scoped>
 ul {
   list-style: none;
+  padding-left: 0;
 }
+li {
+  text-align: center;
+  padding: 5px;
+}
+
+.router-link {
+  text-decoration: none;
+  color: black;
+}
+
+.router-link:hover {
+  color:forestgreen;
+}
+
 </style>

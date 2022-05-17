@@ -17,3 +17,9 @@ export default ({
 })
 </script>
 
+<style>
+.header-bar {
+   margin: 30px 0;
+}
+</style>
+

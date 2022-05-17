@@ -1,21 +1,40 @@
 <template>
   <div class="description">
-    <div>
-      <p id="name">名前: </p><h1>{{ friendDetail.name }}</h1>
-      <p>誕生日: {{ friendDetail.birthday }}</p>
-      <p>好きな食べ物: {{ friendDetail.food }}</p>
-      <p>好きな動物: {{ friendDetail.animal }}</p>
-      <p>コメント: {{ friendDetail.comment }}</p>
+    <div class="detail">
+      <div class="tag">
+        <p class="name-tag">名前:</p>
+        <p>誕生日:</p>
+        <p>好きな食べ物:</p>
+        <p>好きな動物:</p>
+        <p>コメント:</p>
+      </div>
+      <div class="content">
+        <p class="name">{{ friendDetail.name }}</p>
+        <p>{{ friendDetail.birthday }}</p>
+        <p>{{ friendDetail.food }}</p>
+        <p>{{ friendDetail.animal }}</p>
+        <p>{{ friendDetail.comment }}</p>
+      </div>
     </div>
-    <div class="btn">
-      <previous-button :id="this.$route.params.id" @toPrevious="toPreviousFriend"/>
-      <next-button :id="this.$route.params.id" :length="this.$route.params.length" @toNext="toNextFriend"/>
+    
+    <div class="btn-div">
+      <previous-button
+        :id="this.$route.params.id"
+        @toPrevious="toPreviousFriend"
+        class="btn"
+      />
+      <next-button
+        :id="this.$route.params.id"
+        :length="this.$route.params.length"
+        @toNext="toNextFriend"
+        class="btn"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import ApiClient from '../api/index.js'
+import ApiClient from "../api/index.js";
 import NextButton from "@/components/NextButton.vue";
 import PreviousButton from "@/components/PreviousButton.vue";
 
@@ -33,9 +52,9 @@ export default {
   methods: {
     getDetail() {
       ApiClient.get(
-      '/friend/' + this.$route.params.id,
-      res => this.friendDetail = res
-      )
+        "/friend/" + this.$route.params.id,
+        (res) => (this.friendDetail = res)
+      );
     },
     toPreviousFriend() {
       const previousId = Number(this.$route.params.id) - 1;
@@ -50,12 +69,42 @@ export default {
   },
   created() {
     this.getDetail();
-  }
+  },
 };
 </script>
 
-<style scoped>
-#id {
-  display: inline;
+<style>
+.detail {
+  display: flex;
+}
+
+.tag {
+  width: 40%;
+  text-align: right;
+  padding-right: 20px;
+}
+.content {
+  width: 60%;
+  text-align: left;
+  
+}
+
+.name-tag {
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: 30px;
+  margin: 0;
+}
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+.btn > button {
+  color: #fff;
+  background-color: #20b2aa;
+  border-radius: 100vh;
+  border: none;
 }
 </style>
