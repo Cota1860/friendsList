@@ -6,10 +6,10 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @Table("FRIENDS")
-public class FriendEntity {
+public class Friend {
 
     @Id
-    private final int id;
+    private final int friendId;
     private String name;
     private int birthday;
     private String food;

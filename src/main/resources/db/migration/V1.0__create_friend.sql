@@ -1,5 +1,5 @@
 CREATE TABLE `friends` (
-    `id` INT AUTO_INCREMENT,
+    `friend_id` INT AUTO_INCREMENT NOT NULL,
     `name` VARCHAR(30) NOT NULL,
     `birthday` INT NOT NULL,
     `food` VARCHAR(30) NOT NULL,

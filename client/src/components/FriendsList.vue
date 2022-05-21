@@ -1,8 +1,8 @@
 <template>
   <div class="friendsList">
     <ul>
-      <li v-for="friend in friends" :key="friend.id">
-        <router-link class="router-link" :to="{path: `/detail/${friend.id}/${friends.length}`, params: {id: friend.id, length: friends.length} }">{{ friend.name }}</router-link>
+      <li v-for="friend in friends" :key="friend.frinedId">
+        <router-link class="router-link" :to="{path: `/detail/${friend.friendId}/${friends.length}`, params: {friendId: friend.friendId, length: friends.length} }">{{ friend.name }}</router-link>
       </li>
     </ul>
   </div>

@@ -13,7 +13,7 @@ const routes = [
     component: ListView,
   },
   {
-    path: '/detail/:id/:length',
+    path: '/detail/:friendId/:length',
     name: 'detailPage',
     component: DetailView,
     props: true

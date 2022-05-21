@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "NextButton",
-  props: ["id", "length"],
+  props: ["friendId", "length"],
   methods: {
     toNext() {
         this.$emit('toNext');
@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     friendNumber: function() {
-      if (Number(this.id) >= Number(this.length)) {
+      if (Number(this.friendId) >= Number(this.length)) {
         return false;
       } else {
         return true;

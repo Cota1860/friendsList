@@ -19,12 +19,12 @@
     
     <div class="btn-div">
       <previous-button
-        :id="this.$route.params.id"
+        :id="this.$route.params.friendId"
         @toPrevious="toPreviousFriend"
         class="btn"
       />
       <next-button
-        :id="this.$route.params.id"
+        :id="this.$route.params.friendId"
         :length="this.$route.params.length"
         @toNext="toNextFriend"
         class="btn"
@@ -52,17 +52,17 @@ export default {
   methods: {
     getDetail() {
       ApiClient.get(
-        "/friend/" + this.$route.params.id,
+        "/friend/" + this.$route.params.friendId,
         (res) => (this.friendDetail = res)
       );
     },
     toPreviousFriend() {
-      const previousId = Number(this.$route.params.id) - 1;
+      const previousId = Number(this.$route.params.friendId) - 1;
       this.$router.push(`/detail/${previousId}/${this.$route.params.length}`);
       this.getDetail(previousId);
     },
     toNextFriend() {
-      const nextId = Number(this.$route.params.id) + 1;
+      const nextId = Number(this.$route.params.friendId) + 1;
       this.$router.push(`/detail/${nextId}/${this.$route.params.length}`);
       this.getDetail(nextId);
     },
