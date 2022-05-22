@@ -14,7 +14,7 @@ public class FriendDto {
 
 
     private final int friendId;
-    private String name;
+    private String friendName;
     private int birthday;
     private String food;
     private String animal;
@@ -23,7 +23,7 @@ public class FriendDto {
     public static FriendDto of(Friend friend) {
         return new FriendDto(
                 friend.getFriendId(),
-                friend.getName(),
+                friend.getFriendName(),
                 friend.getBirthday(),
                 friend.getFood(),
                 friend.getAnimal(),

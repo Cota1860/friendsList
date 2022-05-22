@@ -2,47 +2,47 @@
   <div class="addFrom">
     <form id="register" @submit="checkForm">
       <label>名前</label>
-      <input type="text" v-model="friendDetail.name" />
+      <input type="text" v-model="newFriendDetail.friendName" />
 
       <label>誕生日</label>
       <input
         type="number"
-        v-model.number="friendDetail.birthday"
+        v-model.number="newFriendDetail.birthday"
         placeholder="例 19981122（半角数字８ケタ）"
       />
 
       <label>好きな食べ物</label>
-      <input type="text" v-model="friendDetail.food" />
+      <input type="text" v-model="newFriendDetail.food" />
       <label>好きな動物</label>
-      <input type="text" v-model="friendDetail.animal" />
+      <input type="text" v-model="newFriendDetail.animal" />
       <label>コメント</label>
       <textarea
-        v-model="friendDetail.comment"
+        v-model="newFriendDetail.comment"
         id="comment"
         cols="30"
         rows="5"
       ></textarea>
-      <input type="submit" value="登録する">
+      <input type="submit" value="登録する" @click="registerFriend">
     </form>
 
     <div>
-      {{ friendDetail.name }}
-      {{ friendDetail.birthday }}
-      {{ friendDetail.food }}
-      {{ friendDetail.animal }}
-      {{ friendDetail.comment }}
+      {{ newFriendDetail.friendName }}
+      {{ newFriendDetail.birthday }}
+      {{ newFriendDetail.food }}
+      {{ newFriendDetail.animal }}
+      {{ newFriendDetail.comment }}
     </div>
   </div>
 </template>
 
 <script>
+import ApiClient from '@/api';
 export default {
   name: "addForm",
   data() {
     return {
-      friendDetail: {
-        id: null,
-        name: null,
+      newFriendDetail: {
+        friendName: null,
         birthday: null,
         food: null,
         animal: null,
@@ -53,7 +53,11 @@ export default {
   },
   methods: {
       checkForm () {
-          console.log("sebmitted!")
+          console.log("submitted!")
+      },
+      registerFriend() {
+        ApiClient.post("/friend/add", this.newFriendDetail);
+        this.$router.push("/");
       }
   }
 };

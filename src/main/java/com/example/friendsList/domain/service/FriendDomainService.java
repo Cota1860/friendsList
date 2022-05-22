@@ -24,6 +24,31 @@ public class FriendDomainService {
         return friendRepository.findBy(friendId);
     }
 
+    public void deleteFriend(int friendId) {
+        Friend friend = findBy(friendId);
+        friendRepository.delete(friend);
+    }
+
+    public void saveNewFriend(String friendName, int birthday, String food, String animal, String comment) {
+        Friend newFriend = new Friend(0);
+        newFriend.setFriendName(friendName);
+        newFriend.setBirthday(birthday);
+        newFriend.setFood(food);
+        newFriend.setAnimal(animal);
+        newFriend.setComment(comment);
+        friendRepository.save(newFriend);
+    }
+
+    public Friend editFriend(int friendId, String friendName, int birthday, String food, String animal, String comment) {
+        Friend friend = findBy(friendId);
+        friend.setFriendName(friendName);
+        friend.setBirthday(birthday);
+        friend.setFood(food);
+        friend.setAnimal(animal);
+        friend.setComment(comment);
+        return friendRepository.save(friend);
+    }
+
     //save, edit, deleteなどもこの後書く
 
 }

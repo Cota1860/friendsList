@@ -9,7 +9,7 @@
         <p>コメント:</p>
       </div>
       <div class="content">
-        <p class="name">{{ friendDetail.name }}</p>
+        <p class="name">{{ friendDetail.friendName }}</p>
         <p>{{ friendDetail.birthday }}</p>
         <p>{{ friendDetail.food }}</p>
         <p>{{ friendDetail.animal }}</p>
@@ -19,17 +19,19 @@
     
     <div class="btn-div">
       <previous-button
-        :id="this.$route.params.friendId"
+        :friendId="this.$route.params.friendId"
         @toPrevious="toPreviousFriend"
         class="btn"
       />
       <next-button
-        :id="this.$route.params.friendId"
+        :friendId="this.$route.params.friendId"
         :length="this.$route.params.length"
         @toNext="toNextFriend"
         class="btn"
       />
     </div>
+    <router-link :to="{path: `${this.$route.path} + /edit`, params: {friendId: friendDetail.friendId, friendName: friendDetail.friendName, birthday: friendDetail.birthday, food: friendDetail.food, animal: friendDetail.animal, comment: friendDetail.comment} }">編集する</router-link>
+    <input type="submit" value="削除する" @click="deleteFriend">
   </div>
 </template>
 
@@ -66,6 +68,10 @@ export default {
       this.$router.push(`/detail/${nextId}/${this.$route.params.length}`);
       this.getDetail(nextId);
     },
+    deleteFriend() {
+      ApiClient.delete("/friend/" + this.$route.params.friendId);
+      this.$router.push("/");
+    }
   },
   created() {
     this.getDetail();
@@ -82,15 +88,25 @@ export default {
   width: 40%;
   text-align: right;
   padding-right: 20px;
+  display:flex;
+  flex-flow: column;
+  justify-content:space-around;
 }
 .content {
   width: 60%;
   text-align: left;
+  display:flex;
+  flex-flow: column;
+  justify-content:space-around;
+}
+
+.content > p {
+  margin: 0;
   
 }
 
 .name-tag {
-  margin-bottom: 20px;
+  margin: 30px 0;
 }
 
 .name {
@@ -107,4 +123,5 @@ export default {
   border-radius: 100vh;
   border: none;
 }
+
 </style>

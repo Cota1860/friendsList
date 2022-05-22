@@ -11,6 +11,7 @@ import lombok.Setter;
 //編集されるFriendのデータ（Todoだとタイトルと完了したかどうか）
 public class EditFriendReqMsg {
 
+    private int friendId;
     private String friendName;
     private int birthday;
     private String food;

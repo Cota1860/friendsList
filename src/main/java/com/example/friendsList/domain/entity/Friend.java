@@ -10,7 +10,7 @@ public class Friend {
 
     @Id
     private final int friendId;
-    private String name;
+    private String friendName;
     private int birthday;
     private String food;
     private String animal;

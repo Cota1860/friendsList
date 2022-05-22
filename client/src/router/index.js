@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import ListView from '../views/ListView.vue'
 import DetailView from '../views/DetailView.vue'
 import AddView from '../views/AddView.vue'
+import EditView from '../views/EditView'
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,14 @@ const routes = [
     path: '/detail/add',
     name: 'addPage',
     component: AddView,
+  },
+  {
+    path: '/detail/:friendId/:length/edit',
+    name: 'editPage',
+    component: EditView,
+    props: true
   }
+
 ]
 
 const router = new VueRouter({

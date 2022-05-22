@@ -2,7 +2,7 @@
   <div class="friendsList">
     <ul>
       <li v-for="friend in friends" :key="friend.frinedId">
-        <router-link class="router-link" :to="{path: `/detail/${friend.friendId}/${friends.length}`, params: {friendId: friend.friendId, length: friends.length} }">{{ friend.name }}</router-link>
+        <router-link class="router-link" :to="{path: `/detail/${friend.friendId}/${friends.length}`, params: {friendId: friend.friendId, length: friends.length} }">{{ friend.friendName }}</router-link>
       </li>
     </ul>
   </div>
@@ -19,6 +19,12 @@ export default {
     }
   },
   created() {
+    ApiClient.get(
+      '/friend',
+      res => this.friends = res
+      )
+  },
+  beforeUpdate(){
     ApiClient.get(
       '/friend',
       res => this.friends = res

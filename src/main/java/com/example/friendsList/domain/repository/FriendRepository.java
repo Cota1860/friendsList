@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface FriendRepository extends CrudRepository<Friend, Integer> {
 
     @Query("SELECT * FROM friends WHERE friend_id = :friendId")
-    Friend findBy(@Param("friend_id") int friendId);
+    Friend findBy(@Param("friendId") int friendId);
 }

@@ -1,6 +1,8 @@
 package com.example.friendsList.app.service;
 
 
+import com.example.friendsList.app.dto.msg.AddFriendReqMsg;
+import com.example.friendsList.app.dto.msg.EditFriendReqMsg;
 import com.example.friendsList.domain.entity.Friend;
 import com.example.friendsList.domain.service.FriendDomainService;
 import lombok.RequiredArgsConstructor;
@@ -36,4 +38,14 @@ public class FriendAppService {
     public Friend getFriend(int friendId) {
         return friendDomainService.findBy(friendId);
     }
+
+    public void addFriend(AddFriendReqMsg reqMsg) {
+        friendDomainService.saveNewFriend(reqMsg.getFriendName(), reqMsg.getBirthday(), reqMsg.getAnimal(), reqMsg.getFood(), reqMsg.getComment());
+    }
+
+    public void editFriend(int friendId, EditFriendReqMsg reqMsg) {
+        friendDomainService.editFriend(friendId, reqMsg.getFriendName(), reqMsg.getBirthday(), reqMsg.getFood(), reqMsg.getAnimal(), reqMsg.getComment());
+    }
+
+    public void deleteFriend(int friendId) { friendDomainService.deleteFriend(friendId); }
 }
